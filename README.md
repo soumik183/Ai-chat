@@ -2,6 +2,20 @@
 
 An intelligent Android file manager application with AI integration for natural language file operations.
 
+[![Android CI Build](https://github.com/YOUR_USERNAME/mclint-ai/actions/workflows/android-build.yml/badge.svg)](https://github.com/YOUR_USERNAME/mclint-ai/actions/workflows/android-build.yml)
+
+## 📥 Download APK
+
+### Latest Release
+Download the latest APK from [GitHub Releases](https://github.com/YOUR_USERNAME/mclint-ai/releases/latest)
+
+### Build Artifacts
+You can also download APKs directly from [GitHub Actions](https://github.com/YOUR_USERNAME/mclint-ai/actions):
+1. Go to the Actions tab
+2. Click on the latest successful workflow run
+3. Scroll down to "Artifacts" section
+4. Download `mclint-ai-debug` or `mclint-ai-release`
+
 ## Features
 
 ### 📁 File Manager
@@ -90,11 +104,34 @@ app/
 ### Setup
 
 1. Clone the repository
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/mclint-ai.git
+   cd mclint-ai
+   ```
+
 2. Open in Android Studio
+
 3. Sync Gradle files
+
 4. Configure API keys in Settings screen
 
-### API Keys
+### Building from Source
+
+#### Debug Build
+```bash
+./gradlew assembleDebug
+```
+
+#### Release Build
+```bash
+./gradlew assembleRelease
+```
+
+APKs will be generated in:
+- Debug: `app/build/outputs/apk/debug/`
+- Release: `app/build/outputs/apk/release/`
+
+## API Keys
 
 Get your API keys from:
 - **HuggingFace**: https://huggingface.co/settings/tokens
@@ -118,22 +155,45 @@ The app requires the following permissions:
 - `MANAGE_EXTERNAL_STORAGE` - Full file access (Android 11+)
 - `READ_MEDIA_IMAGES`, `READ_MEDIA_VIDEO`, `READ_MEDIA_AUDIO` - Media files (Android 13+)
 
-## Building
+## GitHub Actions CI/CD
 
-### Debug Build
-```bash
-./gradlew assembleDebug
-```
+This project uses GitHub Actions for automated builds:
 
-### Release Build
-```bash
-./gradlew assembleRelease
-```
+- **On Push**: Builds debug and release APKs
+- **On Pull Request**: Validates the build
+- **On Main/Master**: Creates a release with downloadable APKs
 
-## License
+### Manual Build Trigger
 
-This project is licensed under the MIT License.
+You can manually trigger a build:
+1. Go to Actions tab
+2. Select "Android CI Build"
+3. Click "Run workflow"
+
+## Installation
+
+1. Download the APK
+2. Enable "Install from unknown sources" in Android settings:
+   - Go to Settings > Security
+   - Enable "Unknown sources" or "Install unknown apps"
+3. Open the APK file to install
 
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- [HuggingFace](https://huggingface.co/) for AI model APIs
+- [OpenRouter](https://openrouter.ai/) for LLM access
+- [Material Design 3](https://m3.material.io/) for UI components

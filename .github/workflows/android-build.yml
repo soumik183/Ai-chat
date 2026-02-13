@@ -1,0 +1,104 @@
+name: Android CI Build
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: gradle
+        
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+      
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v3
+      
+    - name: Build Debug APK
+      run: ./gradlew assembleDebug
+      
+    - name: Build Release APK
+      run: ./gradlew assembleRelease
+      
+    - name: Upload Debug APK
+      uses: actions/upload-artifact@v4
+      with:
+        name: mclint-ai-debug
+        path: app/build/outputs/apk/debug/*.apk
+        
+    - name: Upload Release APK
+      uses: actions/upload-artifact@v4
+      with:
+        name: mclint-ai-release
+        path: app/build/outputs/apk/release/*.apk
+
+  create-release:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Download Debug APK
+      uses: actions/download-artifact@v4
+      with:
+        name: mclint-ai-debug
+        path: debug/
+        
+    - name: Download Release APK
+      uses: actions/download-artifact@v4
+      with:
+        name: mclint-ai-release
+        path: release/
+        
+    - name: Get version name
+      id: version
+      run: |
+        VERSION=$(grep "versionName" app/build.gradle.kts | head -1 | sed 's/.*versionName.*=.*"\(.*\)".*/\1/')
+        echo "version=$VERSION" >> $GITHUB_OUTPUT
+        echo "Version: $VERSION"
+        
+    - name: Create Release
+      id: create_release
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: v${{ steps.version.outputs.version }}-${{ github.run_number }}
+        name: Release v${{ steps.version.outputs.version }} Build ${{ github.run_number }}
+        body: |
+          ## McLint AI File Manager
+          
+          ### What's Changed
+          - Automated build from ${{ github.sha }}
+          
+          ### Downloads
+          - **Debug APK**: For testing and development
+          - **Release APK**: Production ready (unsigned)
+          
+          ### How to Install
+          1. Download the APK file
+          2. Enable "Install from unknown sources" in Android settings
+          3. Open the APK file to install
+          
+        draft: false
+        prerelease: false
+        files: |
+          debug/*.apk
+          release/*.apk
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
