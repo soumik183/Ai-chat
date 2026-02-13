@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">McLint AI</string>
+    
+    <!-- Navigation -->
+    <string name="nav_files">Files</string>
+    <string name="nav_ai_chat">AI Chat</string>
+    <string name="nav_settings">Settings</string>
+    
+    <!-- Permissions -->
+    <string name="permission_title">Storage Permission Required</string>
+    <string name="permission_message">McLint AI needs access to your storage to manage files. Please grant the permission to continue.</string>
+    <string name="permission_grant">Grant Permission</string>
+    <string name="permission_settings">Open Settings</string>
+    
+    <!-- File Manager -->
+    <string name="file_manager_title">File Manager</string>
+    <string name="search_files">Search files…</string>
+    <string name="sort_by_name">Name</string>
+    <string name="sort_by_date">Date</string>
+    <string name="sort_by_size">Size</string>
+    <string name="sort_by_type">Type</string>
+    <string name="view_list">List View</string>
+    <string name="view_grid">Grid View</string>
+    <string name="create_folder">New Folder</string>
+    <string name="create_file">New File</string>
+    <string name="rename">Rename</string>
+    <string name="copy">Copy</string>
+    <string name="move">Move</string>
+    <string name="delete">Delete</string>
+    <string name="share">Share</string>
+    <string name="properties">Properties</string>
+    
+    <!-- Dialogs -->
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_confirm">Confirm</string>
+    <string name="dialog_delete_title">Delete File</string>
+    <string name="dialog_delete_message">Are you sure you want to delete %s?</string>
+    <string name="dialog_delete_multiple">Are you sure you want to delete %d items?</string>
+    <string name="dialog_rename_title">Rename</string>
+    <string name="dialog_create_folder_title">New Folder</string>
+    <string name="dialog_create_file_title">New File</string>
+    <string name="dialog_name_hint">Name</string>
+    
+    <!-- Editor -->
+    <string name="editor_title">Code Editor</string>
+    <string name="editor_save">Save</string>
+    <string name="editor_save_as">Save As</string>
+    <string name="editor_undo">Undo</string>
+    <string name="editor_redo">Redo</string>
+    <string name="editor_ai_assist">AI Assist</string>
+    <string name="editor_line">Line: %d</string>
+    <string name="editor_column">Col: %d</string>
+    
+    <!-- AI Chat -->
+    <string name="ai_chat_title">AI Assistant</string>
+    <string name="ai_message_hint">Ask AI to manage your files…</string>
+    <string name="ai_send">Send</string>
+    <string name="ai_attach_file">Attach file</string>
+    <string name="ai_provider_huggingface">HuggingFace</string>
+    <string name="ai_provider_openrouter">OpenRouter</string>
+    <string name="ai_typing">AI is thinking…</string>
+    
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_ai">AI Configuration</string>
+    <string name="settings_huggingface_key">HuggingFace API Key</string>
+    <string name="settings_openrouter_key">OpenRouter API Key</string>
+    <string name="settings_default_provider">Default AI Provider</string>
+    <string name="settings_default_model">Default Model</string>
+    <string name="settings_appearance">Appearance</string>
+    <string name="settings_theme">Theme</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_dark">Dark</string>
+    <string name="settings_theme_system">System Default</string>
+    <string name="settings_file_manager">File Manager</string>
+    <string name="settings_default_view">Default View</string>
+    <string name="settings_show_hidden">Show Hidden Files</string>
+    <string name="settings_about">About</string>
+    <string name="settings_version">Version</string>
+    
+    <!-- Errors -->
+    <string name="error_generic">An error occurred</string>
+    <string name="error_file_not_found">File not found</string>
+    <string name="error_permission_denied">Permission denied</string>
+    <string name="error_file_exists">File already exists</string>
+    <string name="error_invalid_name">Invalid file name</string>
+    <string name="error_copy_failed">Failed to copy file</string>
+    <string name="error_move_failed">Failed to move file</string>
+    <string name="error_delete_failed">Failed to delete file</string>
+    <string name="error_ai_request">AI request failed</string>
+    <string name="error_no_api_key">Please configure your API key in settings</string>
+    
+    <!-- Success -->
+    <string name="success_file_created">File created</string>
+    <string name="success_file_deleted">File deleted</string>
+    <string name="success_file_copied">File copied</string>
+    <string name="success_file_moved">File moved</string>
+    <string name="success_file_saved">File saved</string>
+    
+    <!-- Empty States -->
+    <string name="empty_folder">This folder is empty</string>
+    <string name="empty_search">No files found</string>
+    <string name="empty_chat">Start a conversation with AI</string>
+</resources>
