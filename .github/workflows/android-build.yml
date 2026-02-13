@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 name: Android CI Build
 
 on:
@@ -6,10 +7,18 @@ on:
   pull_request:
     branches: [ main, master ]
   workflow_dispatch:  # Allow manual trigger
+=======
+name: Android CI – Build APK
+
+on:
+  push:
+    branches: [ main ]
+>>>>>>> f503571a8a776daa363c903cfb8428675158057d
 
 jobs:
   build:
     runs-on: ubuntu-latest
+<<<<<<< HEAD
     
     steps:
     - name: Checkout code
@@ -102,3 +111,26 @@ jobs:
           release/*.apk
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+=======
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Build Debug APK
+        uses: gradle/gradle-build-action@v3
+        with:
+          arguments: assembleDebug
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-debug-apk
+          path: app/build/outputs/apk/debug/app-debug.apk
+>>>>>>> f503571a8a776daa363c903cfb8428675158057d
